@@ -6,9 +6,17 @@ const { SECRET_KEY, REFRESH_KEY } = require('../../config');
 module.exports = {
 	getAll: async (req, res) => {
 		try {
-			const users = await User.find({});
+			const { role } = req.query;
 
-			res.status(200).json({ message: 'Get All Users', data: users });
+			if (role) {
+				const filterByRole = await User.find({ role: role });
+
+				res.status(200).json(filterByRole);
+			} else {
+				const users = await User.find({});
+
+				res.status(200).json({ message: 'Get All Users', data: users });
+			}
 		} catch (error) {
 			console.log(error);
 		}
