@@ -59,7 +59,10 @@ module.exports = {
 		// Check if email exist
 		if (!result) return res.status(401).send('Your email is not registered');
 
-		const { _id } = result;
+		const { _id, status } = result;
+
+		// Check status
+		if (status === 'pending') return res.status(401).send('Your account is not activated yet');
 
 		// Check if email and password match
 		bcrypt.compare(password, result.password).then((response) => {
