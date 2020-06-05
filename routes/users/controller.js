@@ -135,5 +135,24 @@ module.exports = {
 			message: 'Delete token success',
 			data: result
 		});
+	},
+	changeStatus: async (req, res) => {
+		try {
+			const { id } = req.params;
+			const { status } = req.body;
+			const updatedStatus = await User.findByIdAndUpdate(
+				id,
+				{
+					$set: {
+						status: status
+					}
+				},
+				{ new: true }
+			);
+
+			res.status(200).json({ message: 'User Status Updated', data: updatedStatus });
+		} catch (error) {
+			console.log(error);
+		}
 	}
 };
