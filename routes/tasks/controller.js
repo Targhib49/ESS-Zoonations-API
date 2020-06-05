@@ -13,7 +13,7 @@ module.exports = {
 	getTaskByUserId: async (req, res) => {
 		try {
 			const id = req.user._id;
-			const task = await User.find({ userId: id });
+			const task = await Tasks.find({ userId: id });
 			res.status(200).json({ task: task });
 		} catch (error) {
 			console.log(error);
