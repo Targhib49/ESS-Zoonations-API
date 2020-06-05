@@ -5,14 +5,15 @@ const verify = require('../authorization');
 const {
 	getAll,
 	getTaskByUserId,
-	createNewTask
-	// updateStatus, deleteTask
+	createNewTask,
+	updateStatus
+	// deleteTask
 } = require('./controller');
 
 router.get('/', getAll);
 router.get('/id', verify, getTaskByUserId);
 router.post('/', createNewTask);
-// router.put('/', updateStatus);
+router.put('/:id', updateStatus);
 // router.delete('/token', deleteTask);
 
 module.exports = router;

@@ -37,6 +37,26 @@ module.exports = {
 		} catch (error) {
 			console.log(error);
 		}
+	},
+	updateStatus: async (req, res) => {
+		try {
+			const { id } = req.params;
+			const { status } = req.body;
+
+			const updatedTask = await Tasks.findByIdAndUpdate(
+				id,
+				{
+					$set: {
+						status: status
+					}
+				},
+				{ new: true }
+			);
+
+			res.status(200).json({ message: 'Task Status Updated', data: updatedTask });
+		} catch (error) {
+			throw error;
+		}
 	}
 	// getUserById: async (req, res) => {
 	// 	try {
