@@ -8,6 +8,6 @@ router.get('/', getAll);
 router.get('/id', verify, getTaskByUserId);
 router.post('/', createNewTask);
 router.put('/:id', updateStatus);
-router.delete('/', deleteTask);
+router.delete('/:id', deleteTask);
 
 module.exports = router;
