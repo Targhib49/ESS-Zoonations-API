@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/users', require('./routes/users'));
+app.use('/tasks', require('./routes/tasks'));
 
 if (db) {
 	app.listen(PORT, () => {
