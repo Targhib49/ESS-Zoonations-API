@@ -3,7 +3,7 @@ const { Tasks } = require('../../models');
 module.exports = {
 	getAll: async (req, res) => {
 		try {
-			const tasks = await Tasks.find({});
+			const tasks = await Tasks.find({}).populate('userId');
 
 			res.status(200).json({ message: 'Get All Tasks', data: tasks });
 		} catch (error) {
