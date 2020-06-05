@@ -21,13 +21,12 @@ module.exports = {
 	},
 	createNewTask: async (req, res) => {
 		try {
-			const { userId, projectName, taskDetails, status, deadline } = req.body;
+			const { userId, projectName, taskDetails, deadline } = req.body;
 
 			const newTask = await Tasks.create({
 				userId,
 				projectName,
 				taskDetails,
-				status,
 				deadline
 			});
 
